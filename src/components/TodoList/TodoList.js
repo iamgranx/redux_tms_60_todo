@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 
+import { getSlice } from "../../store/todo";
 import TodoItem from "../TodoItem";
 
 const TodoListContainer = styled("div")`
@@ -18,7 +20,9 @@ const TodoListContainer = styled("div")`
   }
 `;
 
-const TodoList = ({ todoList }) => {
+const TodoList = () => {
+  const { todoList } = useSelector(getSlice);
+
   return (
     <TodoListContainer>
       <ul>
