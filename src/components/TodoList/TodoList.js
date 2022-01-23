@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 
+
+
 import { getSlice } from "../../store/todo";
 import TodoItem from "../TodoItem";
 
@@ -29,7 +31,9 @@ const TodoList = () => {
         {todoList?.map((todo) => (
           <TodoItem key={todo.id} {...todo} />
         ))}
+
       </ul>
+
     </TodoListContainer>
   );
 };

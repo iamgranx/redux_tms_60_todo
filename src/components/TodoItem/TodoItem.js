@@ -1,5 +1,10 @@
-import React from "react";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { todoDone, deleteTodo } from "../../store/todo";
+
+
+import Button from "../Button";
+
 
 const TodoItemContainer = styled("li")`
   padding: 4px;
@@ -10,10 +15,33 @@ const TodoItemContainer = styled("li")`
   }
 `;
 
-const TodoItem = ({ title, completed }) => {
+const TodoItem = ({ title, completed, id }) => {
+
+  const dispatch = useDispatch();
+
+  console.log(todoDone)
+  console.log(deleteTodo)
+
+  
+  const handleChange = () => {
+    dispatch(todoDone(id));
+
+  };
+
+  const handleDelete = () => {
+    dispatch(deleteTodo(id));
+  }
+
+
   return (
     <TodoItemContainer completed={completed}>
-      <p>{title}</p>
+      
+      <p>{title}
+      <div>
+          <Button onClick={handleChange} type="submit">done</Button>
+          <Button onClick={handleDelete} type="submit">delete</Button>
+      </div></p>
+      
     </TodoItemContainer>
   );
 };
